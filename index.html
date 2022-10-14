@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="styles.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <title>Trivia</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="hide" id="question-container">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn"></button>
+            <button id="skip-btn" class="skip-btn btn"></button>
+            <button id="giveup-btn" class="giveup-btn btn"></button>
+            <button id="continue-btn" class="continue-btn btn hide"></button>
+        </div>
+    </div>
 </body>
 </html>

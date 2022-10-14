@@ -1,0 +1,70 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --hue-default: 258;
+    --hue-correct: 145;
+    --hue-incorrect: 0;
+}
+
+body {
+    --hue: var(--hue-default);
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 25%);
+}
+
+body.correct {
+    --hue: var(--hue-correct)
+}
+
+body.incorrect {
+    --hue: var(--hue-incorrect)
+}
+
+.container {
+    width: ;
+    max-width: ;
+    background-color: ;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 3px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    --hue: var(--hue-default);
+    border: 1px solid hsl(var(--hue));
+    background-color: hsl(var(--hue));
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: aliceblue;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: goldenrod;
+}
+
+btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+btn.incorrect {
+    --hue: var(--hue-incorrect)
+}
