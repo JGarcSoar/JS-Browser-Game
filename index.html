@@ -10,17 +10,21 @@
 </head>
 <body>
     <div class="container">
-        <div class="hide" id="question-container">
+        <div class="controls">
+            <button class="start-btn btn" id="start-btn">Start</button>
+            <button class="skip-btn btn hide" id="skip-btn">Skip</button>
+            <button class="giveup-btn btn hide" id="giveup-btn">Give Up</button>
+            <button class="continue-btn btn hide" id="continue-btn">Continue</button>
+        </div>
+        <div class="question-img"></div>
+        <div id="question-container">
+            <div id="question">Question</div>
+            <div class="btn-grid" id="answer-btn">
             <button class="btn">Answer 1</button>
             <button class="btn">Answer 2</button>
             <button class="btn">Answer 3</button>
             <button class="btn">Answer 4</button>
-        </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn"></button>
-            <button id="skip-btn" class="skip-btn btn"></button>
-            <button id="giveup-btn" class="giveup-btn btn"></button>
-            <button id="continue-btn" class="continue-btn btn hide"></button>
+            </div>
         </div>
     </div>
 </body>
