@@ -1,5 +1,7 @@
 const buttonStart = document.getElementById("start-btn");
 const buttonContinue = document.getElementById("continue-btn");
+const buttonGiveUp = document.getElementById("giveup-btn");
+const buttonSkip = document.getElementById("skip-btn");
 const questionContainerDiv = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButton = document.getElementById("answer-btn");
@@ -11,10 +13,15 @@ buttonContinue.addEventListener("click", () => {
   currentQuestion++;
   nextQuestion();
 });
+buttonSkip.addEventListener("click", () => {
+  currentQuestion++;
+  nextQuestion();
+  buttonSkip.style.display = "none";
+});
 
 function gameStart() {
   console.log("started");
-  buttonStart.classList.add("hide");
+  buttonSkip.classList.remove("hide");
   questionShuffle = questions.sort(() => Math.random() - 0.5);
   currentQuestion = 0;
   questionContainerDiv.classList.remove("hide");
@@ -24,12 +31,14 @@ function gameStart() {
 function nextQuestion() {
   stateReset();
   questionShow(questionShuffle[currentQuestion]);
+  buttonStart.classList.add("hide");
+  buttonGiveUp.classList.remove("hide");
 }
 
 function questionShow(question) {
   questionElement.innerText = question.question;
   question.answers.forEach((answer) => {
-    const button = document.createElement("button");
+    let button = document.createElement("button");
     button.innerText = answer.text;
     button.classList.add("btn");
     if (answer.correct) {
@@ -81,6 +90,29 @@ function stateReset() {
 
 const questions = [
   {
+    question: "What is 2 / 2?",
+    answers: [
+      { text: "1", correct: true },
+      { text: "2", correct: false },
+      { text: "64", correct: false },
+      { text: "32", correct: false },
+    ],
+  },
+  {
+    question: "What is 2 * 2?",
+    answers: [
+      { text: "4", correct: true },
+      { text: "8", correct: false },
+    ],
+  },
+  {
+    question: "What is 2 - 2?",
+    answers: [
+      { text: "0", correct: true },
+      { text: "-2", correct: false },
+    ],
+  },
+  {
     question: "What is 2 + 2?",
     answers: [
       { text: "4", correct: true },
@@ -88,3 +120,5 @@ const questions = [
     ],
   },
 ];
+
+// needs to add functionality to the giveup button, needs to add score meter and needs to add more questions

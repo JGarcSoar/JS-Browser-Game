@@ -48,7 +48,6 @@ body.incorrect {
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(2, auto);
-    align-items: end;
     gap: 10px;
     margin: 20px 0;
 }
@@ -77,7 +76,7 @@ body.incorrect {
 }
 
 .start-btn, .skip-btn, .giveup-btn, .continue-btn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
 }
@@ -85,8 +84,9 @@ body.incorrect {
 .controls {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: space-between;
+    padding: 5px;
+    gap: 5px
 }
 
 .hide {
