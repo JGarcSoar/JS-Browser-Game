@@ -15,10 +15,10 @@ body {
     margin: 0;
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 100%, 25%);
+    background-color: hsl(var(--hue), 100%, 20%);
 }
 
 body.correct {
@@ -39,9 +39,13 @@ body.incorrect {
     box-shadow: 0 0 10px 3px;
 }
 
-.question-img {
-    width: 300px;
+.question-timer {
+    width: auto;
     height: 280px;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-grid {
@@ -75,7 +79,7 @@ body.incorrect {
     --hue: var(--hue-incorrect)
 }
 
-.start-btn, .skip-btn, .giveup-btn, .continue-btn {
+.start-btn, .skip-btn, .quit-btn, .next-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
@@ -91,4 +95,10 @@ body.incorrect {
 
 .hide {
     display: none;
+}
+
+.scoreboard {
+    border-top:  1px solid;
+    position: absolute;
+    top: 520px
 }

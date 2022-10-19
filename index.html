@@ -13,19 +13,26 @@
         <div class="controls">
             <button class="start-btn btn" id="start-btn">Start</button>
             <button class="skip-btn btn hide" id="skip-btn">Skip</button>
-            <button class="giveup-btn btn hide" id="giveup-btn">Give Up</button>
-            <button class="continue-btn btn hide" id="continue-btn">Continue</button>
+            <button class="quit-btn btn hide" id="quit-btn">Quit</button>
+            <button class="next-btn btn hide" id="next-btn">Next</button>
         </div>
-        <div class="question-img"></div>
+        <div class="question-timer" id="timer"></div>
         <div id="question-container">
             <div id="question">Question</div>
             <div class="btn-grid" id="answer-btn">
-            <button class="btn">Answer 1</button>
-            <button class="btn">Answer 2</button>
-            <button class="btn">Answer 3</button>
-            <button class="btn">Answer 4</button>
+            <button class="btn hide">Answer 1</button>
+            <button class="btn hide">Answer 2</button>
+            <button class="btn hide">Answer 3</button>
+            <button class="btn hide">Answer 4</button>
             </div>
         </div>
+        <div class="scoreboard" id="score">Score</div>
     </div>
 </body>
+<footer>
+<audio id="lets-play" src="https://millionaire-school.netlify.com/sounds/lets_play.mp3"></audio>
+<audio id="easy" src="https://millionaire-school.netlify.com/sounds/easy.mp3"></audio>
+<audio id="wrong-answer" src="https://millionaire-school.netlify.com/sounds/wrong_answer.mp3"></audio>
+<audio id="right-answer" src="https://millionaire-school.netlify.com/sounds/correct_answer.mp3"></audio>
+</footer>
 </html>
