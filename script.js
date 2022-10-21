@@ -14,6 +14,8 @@ const rightAnswerAudio = document.getElementById("right-answer");
 const countDownTimer = document.getElementById("timer");
 
 let questionShuffle, currentQuestion;
+let intervalId;
+let timeoutId;
 
 questionElement.innerText = "";
 
@@ -25,6 +27,7 @@ buttonNext.addEventListener("click", () => {
 });
 buttonSkip.addEventListener("click", () => {
   currentQuestion++;
+  stopTimerSound();
   nextQuestion();
   buttonSkip.style.display = "none";
 });
@@ -38,7 +41,6 @@ function gameStart() {
   currentQuestion = 0;
   questionContainerDiv.classList.remove("hide");
   nextQuestion();
-  startTimerSound();
 }
 
 function nextQuestion() {
@@ -65,15 +67,7 @@ function questionShow(question) {
 
 function quit() {
   clearStatus(document.body);
-  buttonStart.classList.remove("hide");
-  buttonNext.classList.add("hide");
-  buttonSkip.classList.add("hide");
-  buttonQuit.classList.add("hide");
-  questionElement.innerText = "";
-  stopTimerSound();
-  while (answerButton.firstChild) {
-    answerButton.removeChild(answerButton.firstChild);
-  }
+  gameOver();
 }
 
 function answerSelect(e) {
@@ -97,7 +91,13 @@ function statusClassSet(element, correct) {
     element.classList.add("correct");
     stopTimerSound();
     rightAnswerAudio.play();
-  } else {
+    rightAnswerAudio.volume = 0.3;
+    timeOut = setTimeout(() => {
+      currentQuestion++;
+      nextQuestion();
+    }, 8000);
+  }
+  if (!correct) {
     element.classList.add("incorrect");
     gameOver();
   }
@@ -116,6 +116,29 @@ function stateReset() {
   }
 }
 
+function myStopFunction() {
+  clearTimeout(timeoutId);
+}
+
+function gameOver() {
+  stopTimerSound();
+  wrongAnswerAudio.play();
+  wrongAnswerAudio.volume = 0.3;
+  buttonNext.style.display = "none";
+  buttonQuit.classList.add("hide");
+  buttonSkip.classList.add("hide");
+  buttonStart.classList.remove("hide");
+  buttonStart.innerText = "Restart";
+  countDownTimer.innerText = "Game Over!";
+  questionElement.innerText = "";
+  while (answerButton.firstChild) {
+    answerButton.removeChild(answerButton.firstChild);
+  }
+  timeOut = setTimeout(() => {
+    stopTimerSound();
+  }, 3000);
+}
+
 function timer() {
   currentTime = new Date().getTime();
   intervalId = setInterval(() => {
@@ -127,7 +150,7 @@ function timer() {
       clearInterval(intervalId);
       gameOver();
     }
-
+    console.log("timer end");
     return interval;
   }, 100);
 }
@@ -136,29 +159,23 @@ function startTimerSound() {
   timer();
   letsPlayAudio.play();
   letsPlayAudio.volume = 0.3;
-  timeoutId = setTimeout(() => {
+  timeOutId = setTimeout(() => {
     easyAudio.play();
     easyAudio.volume = 0.3;
   }, 4000);
 }
 
 function stopTimerSound() {
-  clearTimeout(timeoutId);
+  myStopFunction();
   clearInterval(intervalId);
   letsPlayAudio.pause();
   letsPlayAudio.currentTime = 0;
   easyAudio.pause();
   easyAudio.currentTime = 0;
-  wrongAnswerAudio.pause();
-  wrongAnswerAudio.currentTime = 0;
-  rightAnswerAudio.pause();
-  rightAnswerAudio.currentTime = 0;
-}
-
-function gameOver() {
-  stopTimerSound();
-  wrongAnswerAudio.play();
-  wrongAnswerAudio.volume = 0.3;
+  //   wrongAnswerAudio.pause();
+  //   wrongAnswerAudio.currentTime = 0;
+  //   rightAnswerAudio.pause();
+  //   rightAnswerAudio.currentTime = 0;
 }
 
 // question list
@@ -195,4 +212,4 @@ const questions = [
   },
 ];
 
-// add more questions, fix the sound issues and add gameover rules
+// add more questions, add score, fix gameover issue
