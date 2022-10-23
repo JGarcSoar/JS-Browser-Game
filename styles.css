@@ -99,6 +99,5 @@ body.incorrect {
 
 .scoreboard {
     border-top:  1px solid;
-    position: absolute;
-    top: 520px
+    position: relative;
 }

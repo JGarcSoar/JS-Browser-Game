@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
+    <script defer src="constants.js"></script>
+    <script defer src="questions.js"></script>
     <script defer src="script.js"></script>
     <title>Trivia</title>
 </head>
@@ -20,13 +22,15 @@
         <div id="question-container">
             <div id="question">Question</div>
             <div class="btn-grid" id="answer-btn">
-            <button class="btn hide answer" id="btn-answer">Answer 1</button>
-            <button class="btn hide answer" id="btn-answer">Answer 2</button>
-            <button class="btn hide answer" id="btn-answer">Answer 3</button>
-            <button class="btn hide answer" id="btn-answer">Answer 4</button>
+            <button class="btn hide" id="answer">Answer 1</button>
+            <button class="btn hide" id="answer">Answer 2</button>
+            <button class="btn hide" id="answer">Answer 3</button>
+            <button class="btn hide" id="answer">Answer 4</button>
             </div>
         </div>
-        <div class="scoreboard" id="score">Score</div>
+        <div class="scoreboard">
+            <p id="score"></p>
+        </div>
     </div>
 </body>
 <footer>

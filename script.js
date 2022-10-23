@@ -1,23 +1,5 @@
-//constants and variables
-const buttonStart = document.getElementById("start-btn");
-const buttonNext = document.getElementById("next-btn");
-const buttonQuit = document.getElementById("quit-btn");
-const buttonSkip = document.getElementById("skip-btn");
-const questionContainerDiv = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answerButton = document.getElementById("answer-btn");
-const scoreKeeper = document.getElementById("score");
-const letsPlayAudio = document.getElementById("lets-play");
-const easyAudio = document.getElementById("easy");
-const wrongAnswerAudio = document.getElementById("wrong-answer");
-const rightAnswerAudio = document.getElementById("right-answer");
-const countDownTimer = document.getElementById("timer");
-
-let questionShuffle, currentQuestion;
-let intervalId;
-let timeoutId;
-
 questionElement.innerText = "";
+let score = 0;
 
 //event listeners
 buttonStart.addEventListener("click", gameStart);
@@ -35,14 +17,6 @@ buttonQuit.addEventListener("click", quit);
 
 //functions
 
-function disableBtn() {
-  document.querySelector(".answer").disabled = true;
-}
-console.log("document", document.querySelector(".answer"));
-function enableBtn() {
-  //   document.querySelector(".answer")[1].disabled = false;
-}
-
 function gameStart() {
   console.log("started");
   buttonSkip.classList.remove("hide");
@@ -58,7 +32,6 @@ function nextQuestion() {
   buttonStart.classList.add("hide");
   buttonQuit.classList.remove("hide");
   startTimerSound();
-  enableBtn();
 }
 
 function questionShow(question) {
@@ -102,17 +75,14 @@ function statusClassSet(element, correct) {
   if (correct) {
     element.classList.add("correct");
     stopTimerSound();
-    disableBtn();
     rightAnswerAudio.play();
     rightAnswerAudio.volume = 0.3;
-    timeOut = setTimeout(() => {
-      currentQuestion++;
-      nextQuestion();
-    }, 8000);
+    buttonQuit.classList.add("hide");
+    buttonSkip.classList.add("hide");
+    scoreMeter();
   }
   if (!correct) {
     element.classList.add("incorrect");
-    // disableBtn();
   }
 }
 
@@ -185,44 +155,14 @@ function stopTimerSound() {
   letsPlayAudio.currentTime = 0;
   easyAudio.pause();
   easyAudio.currentTime = 0;
-  //   wrongAnswerAudio.pause();
-  //   wrongAnswerAudio.currentTime = 0;
-  //   rightAnswerAudio.pause();
-  //   rightAnswerAudio.currentTime = 0;
 }
 
-// question list
-const questions = [
-  {
-    question: "What is 2 / 2?",
-    answers: [
-      { text: "1", correct: true },
-      { text: "2", correct: false },
-      { text: "64", correct: false },
-      { text: "32", correct: false },
-    ],
-  },
-  {
-    question: "What is 2 * 2?",
-    answers: [
-      { text: "4", correct: true },
-      { text: "8", correct: false },
-    ],
-  },
-  {
-    question: "What is 2 - 2?",
-    answers: [
-      { text: "0", correct: true },
-      { text: "-2", correct: false },
-    ],
-  },
-  {
-    question: "What is 2 + 2?",
-    answers: [
-      { text: "4", correct: true },
-      { text: "34", correct: false },
-    ],
-  },
-];
+function scoreMeter() {
+  score += 100000;
+  scoreKeeper.innerText = `Score: ${score} / 1000000`;
+  if (score === 1000000) {
+    countDownTimer.innerText = "Congratulations!";
+  }
+}
 
 // add more questions, add score, fix gameover issue

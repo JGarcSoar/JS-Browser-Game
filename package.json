@@ -1,0 +1,27 @@
+{
+  "name": "questions",
+  "version": "1.0.0",
+  "description": "questions",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JGarcSoar/JS-Browser-Game.git"
+  },
+  "keywords": [
+    "questions",
+    "trivia"
+  ],
+  "author": "Joe Soares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JGarcSoar/JS-Browser-Game/issues"
+  },
+  "homepage": "https://github.com/JGarcSoar/JS-Browser-Game#readme",
+  "dependencies": {
+    "node": "^19.0.0"
+  }
+}
