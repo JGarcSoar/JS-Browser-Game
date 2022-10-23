@@ -34,6 +34,15 @@ buttonSkip.addEventListener("click", () => {
 buttonQuit.addEventListener("click", quit);
 
 //functions
+
+function disableBtn() {
+  document.querySelector(".answer").disabled = true;
+}
+console.log("document", document.querySelector(".answer"));
+function enableBtn() {
+  //   document.querySelector(".answer")[1].disabled = false;
+}
+
 function gameStart() {
   console.log("started");
   buttonSkip.classList.remove("hide");
@@ -49,6 +58,7 @@ function nextQuestion() {
   buttonStart.classList.add("hide");
   buttonQuit.classList.remove("hide");
   startTimerSound();
+  enableBtn();
 }
 
 function questionShow(question) {
@@ -73,7 +83,9 @@ function quit() {
 function answerSelect(e) {
   let selectedBtn = e.target;
   let correct = selectedBtn.dataset.correct;
-  statusClassSet(document.body, correct);
+  if (!correct) {
+    gameOver();
+  }
   Array.from(answerButton.children).forEach((button) => {
     statusClassSet(button, button.dataset.correct);
   });
@@ -90,6 +102,7 @@ function statusClassSet(element, correct) {
   if (correct) {
     element.classList.add("correct");
     stopTimerSound();
+    disableBtn();
     rightAnswerAudio.play();
     rightAnswerAudio.volume = 0.3;
     timeOut = setTimeout(() => {
@@ -99,7 +112,7 @@ function statusClassSet(element, correct) {
   }
   if (!correct) {
     element.classList.add("incorrect");
-    gameOver();
+    // disableBtn();
   }
 }
 
