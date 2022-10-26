@@ -162,7 +162,7 @@ function stopTimerSound() {
 }
 
 function scoreMeter() {
-  score += 1000000;
+  score += 100000;
   scoreKeeper.innerText = `Score: ${score} / 1000000`;
   if (score === 1000000) {
     countDownTimer.innerText = "Congratulations!";
