@@ -13,6 +13,7 @@ const wrongAnswerAudio = document.getElementById("wrong-answer");
 const rightAnswerAudio = document.getElementById("right-answer");
 const countDownTimer = document.getElementById("timer");
 const disabledButton = document.getElementById("answer");
+const image = document.querySelector(".gif");
 
 let questionShuffle, currentQuestion;
 let intervalId;

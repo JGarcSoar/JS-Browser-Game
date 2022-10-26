@@ -1,7 +1,9 @@
+// starters
 questionElement.innerText = "";
+image.style.visibility = "hidden";
 let score = 0;
 
-//event listeners
+// event listeners
 buttonStart.addEventListener("click", gameStart);
 buttonNext.addEventListener("click", () => {
   currentQuestion++;
@@ -15,14 +17,15 @@ buttonSkip.addEventListener("click", () => {
 });
 buttonQuit.addEventListener("click", quit);
 
-//functions
-
+// functions
 function gameStart() {
   console.log("started");
+  document.querySelector(".goldbar").style.display = "none";
   buttonSkip.classList.remove("hide");
   questionShuffle = questions.sort(() => Math.random() - 0.5);
   currentQuestion = 0;
   questionContainerDiv.classList.remove("hide");
+  clearScore();
   nextQuestion();
 }
 
@@ -113,13 +116,14 @@ function gameOver() {
   buttonStart.classList.remove("hide");
   buttonStart.innerText = "Restart";
   countDownTimer.innerText = "Game Over!";
+  countDownTimer.style.color = "#8B0000";
   questionElement.innerText = "";
   while (answerButton.firstChild) {
     answerButton.removeChild(answerButton.firstChild);
   }
   timeOut = setTimeout(() => {
     stopTimerSound();
-  }, 3000);
+  }, 4000);
 }
 
 function timer() {
@@ -162,7 +166,19 @@ function scoreMeter() {
   scoreKeeper.innerText = `Score: ${score} / 1000000`;
   if (score === 1000000) {
     countDownTimer.innerText = "Congratulations!";
+    countDownTimer.style.color = "#DAA520";
+    buttonNext.style.display = "none";
+    image.style.visibility = "visible";
+    buttonStart.classList.remove("hide");
+    buttonStart.innerText = "Restart";
   }
 }
 
-// add more questions, add score, fix gameover issue
+function clearScore() {
+  score = 0;
+  scoreKeeper.innerText = `Score: ${score} / 1000000`;
+  image.style.visibility = "hidden";
+  countDownTimer.style.color = "black";
+}
+
+// unable to disable buttons

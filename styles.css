@@ -18,7 +18,7 @@ body {
     height: 80vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 100%, 20%);
+    background-color: black;
 }
 
 body.correct {
@@ -29,23 +29,41 @@ body.incorrect {
     --hue: var(--hue-incorrect)
 }
 
+.gif {
+    width: 2500px;
+    height: 2500px;
+    position: fixed;
+    z-index: -1;
+}
+
+.goldbar {
+    position: relative;
+    height: 450px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .container {
-    width: 800px;
-    height: 500px;
+    width: 850px;
+    height: 550px;
     max-width: 80%;
-    background-color: aliceblue;
+    background-color: white;
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0 0 10px 3px;
+    box-shadow: 0 0 10px aliceblue;
 }
 
 .question-timer {
     width: auto;
     height: 280px;
-    font-size: 100px;
+    font-size: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    font-family: 'Libre Baskerville', serif;
 }
 
 .btn-grid {
@@ -54,6 +72,7 @@ body.incorrect {
     grid-template-rows: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
+    z-index: 10;
 }
 
 .btn {
@@ -64,6 +83,7 @@ body.incorrect {
     padding: 5px 10px;
     color: aliceblue;
     outline: none;
+    z-index: 10;
 }
 
 .btn:hover {
@@ -83,6 +103,7 @@ body.incorrect {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
+    z-index: 10;
 }
 
 .controls {
@@ -90,7 +111,8 @@ body.incorrect {
     justify-content: center;
     align-items: space-between;
     padding: 5px;
-    gap: 5px
+    gap: 5px;
+    z-index: 10;
 }
 
 .hide {
@@ -99,5 +121,7 @@ body.incorrect {
 
 .scoreboard {
     border-top:  1px solid;
-    position: relative;
+    position: fixed;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
 }
