@@ -162,13 +162,13 @@ function stopTimerSound() {
 }
 
 function scoreMeter() {
-  score += 100000;
+  score += 1000000;
   scoreKeeper.innerText = `Score: ${score} / 1000000`;
   if (score === 1000000) {
     countDownTimer.innerText = "Congratulations!";
     countDownTimer.style.color = "#DAA520";
-    buttonNext.style.display = "none";
     image.style.visibility = "visible";
+    buttonNext.style.display = "none";
     buttonStart.classList.remove("hide");
     buttonStart.innerText = "Restart";
   }
